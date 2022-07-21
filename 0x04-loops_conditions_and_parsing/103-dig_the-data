@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script displays the information from apache file in descreasing order of occurence number
+awk '{print $1,$9}' apache-access.log | sort | uniq -c | sort -nr
