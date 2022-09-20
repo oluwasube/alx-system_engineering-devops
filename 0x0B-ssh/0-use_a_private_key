@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 #!/usr/bin/env bash
 # use ssh to connect to server using private key pair
 ssh -i ~/.ssh/school ubuntu@3.237.15.144
+=======
+#!/usr/bin/env bash
+# use ssh to connect to server using private key
+ssh -i ~/.ssh/school ubuntu@3.83.192.224
+>>>>>>> 64e874a57c5c369bf67e329a433f5437db8aac60
