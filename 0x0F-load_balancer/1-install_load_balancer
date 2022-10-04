@@ -10,8 +10,8 @@ frontend front_server
 	default_backend backend_server
 backend backend_server
 	balance roundrobin
-	server 4322-web-01 34.207.236.163:80 check
-	server 4322-web-02 107.20.69.130:80 check
+	server 7074-web-01 34.237.51.17:80 check
+	server 7074-web-02 44.192.95.90:80 check
 EOF
 
 sudo cp $TMPFILE /etc/haproxy/haproxy.cfg
