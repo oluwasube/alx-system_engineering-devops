@@ -1,4 +1,3 @@
-ssh ubuntu@3.236.50.58
 global
         log /dev/log    local0
         log /dev/log    local1 notice
@@ -43,7 +42,7 @@ frontend www.oluwasube.tech
         acl letsencrypt-acl path_beg /.well-known/acme-challenge/use_backend letsencrypt-backend if letsencrypt-acl
         redirect scheme https code 301 if !{ ssl_fc }
         default_backend backend_server
-        
+
 backend backend_server
         balance roundrobin
         server 7074-web-01 34.237.51.17:80 check
