@@ -34,7 +34,7 @@ defaults
 
 frontend www.oluwasube.tech
         bind *:80
-        bind *:443 ssl crt /etc/letsencrypt/live/www.oluwasube.tech/all.pem
+        bind *:443 ssl crt /etc/letsencrypt/live/www.oluwasube.tech/fullchain.pem
         mode http
         option forwardfor
         redirect scheme https code 301 if !{ ssl_fc }
