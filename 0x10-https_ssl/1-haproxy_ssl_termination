@@ -7,8 +7,6 @@ global
         user haproxy
         group haproxy
         daemon
-        maxconn 2048
-        tune.ssl.default-dh-param 2048
 
         # Default SSL material locations
         ca-base /etc/ssl/certs
@@ -22,9 +20,9 @@ defaults
         log     global
         mode    http
         option  httplog
-        option  dontlognull timeout connect 5000
-        timeout client  50000
-        timeout server  50000
+        option  dontlognull
+        timeout connect 5000
+        timeout client  50000 
         errorfile 400 /etc/haproxy/errors/400.http
         errorfile 403 /etc/haproxy/errors/403.http
         errorfile 408 /etc/haproxy/errors/408.http
@@ -36,13 +34,11 @@ defaults
 
 frontend www.oluwasube.tech
         bind *:80
-        bind *:443 ssl crt /etc/ssl/www.oluwasube.tech/www.oluwasube.tech.pem
+        bind *:443 ssl crt /etc/letsencrypt/live/www.oluwasube.tech/all.pem
         mode http
         option forwardfor
-        acl letsencrypt-acl path_beg /.well-known/acme-challenge/use_backend letsencrypt-backend if letsencrypt-acl
         redirect scheme https code 301 if !{ ssl_fc }
         default_backend backend_server
-
 backend backend_server
         balance roundrobin
         server 7074-web-01 34.237.51.17:80 check
