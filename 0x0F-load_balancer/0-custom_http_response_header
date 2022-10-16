@@ -9,4 +9,5 @@ sudo sed -i '/listen \[::\]:80 default_server;/a rewrite ^/redirect_me/(.*)$ htt
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 sudo sed -i '/server_name _;/a error_page 404 /404.html; location = /404.html {root /var/www/html; internal;}' /etc/nginx/sites-enabled/default
 sudo sed -i '/location/a add_header X-Served-By $HOSTNAME;' /etc/nginx/sites-enabled/default
+
 sudo service nginx restart
